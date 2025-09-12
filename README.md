@@ -8,6 +8,11 @@ To build the project run:
 `mvn clean install`  
 This will generate a runnable JAR in `target/craft-java-1.0.0.jar`.
 
+
+
+dummy commit
+
+
 Before running the program you must set environment variables.  
 On Windows (PowerShell):  
 `$env:GITHUB_TOKEN = "your_github_pat"`  
