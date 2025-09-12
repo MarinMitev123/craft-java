@@ -6,10 +6,10 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public final class GitHubUser {
-    private String login;
-    private String name;
-    private String email;
-    private String location;
-    private String twitter_username;
-    private String created_at;
+  private String login;
+  private String name;
+  private String email;
+  private String location;
+  private String twitterUsername;
+  private String createdAt;
 }

@@ -11,10 +11,10 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public final class FreshdeskContact {
-    private Long id;
-    private String uniqueExternalId;
-    private String name;
-    private String email;
-    private String address;
-    private String twitterId;
+  private Long id;
+  private String uniqueExternalId;
+  private String name;
+  private String email;
+  private String address;
+  private String twitterId;
 }

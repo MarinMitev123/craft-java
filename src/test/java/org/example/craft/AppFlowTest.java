@@ -1,13 +1,13 @@
 package org.example.craft;
 
-import org.example.craft.github.GitHubClient;
-import org.example.craft.github.dto.GitHubUser;
-import org.example.craft.freshdesk.FreshdeskClient;
-import org.example.craft.freshdesk.dto.FreshdeskContact;
-import org.junit.jupiter.api.Test;
-
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
+
+import org.example.craft.freshdesk.FreshdeskClient;
+import org.example.craft.freshdesk.dto.FreshdeskContact;
+import org.example.craft.github.GitHubClient;
+import org.example.craft.github.dto.GitHubUser;
+import org.junit.jupiter.api.Test;
 
 public class AppFlowTest {
 

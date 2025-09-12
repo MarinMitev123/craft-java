@@ -9,24 +9,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class GitHubClientTest {
 
-    @Test
-    void parses_user() throws Exception {
-        SimpleHttp.Transport fakeTransport = (method, url, headers, body) ->
-                new SimpleHttp.Response(200, "{ \"login\": \"octo\", \"name\": \"Octo Cat\" }");
+  @Test
+  void parses_user() throws Exception {
+    SimpleHttp.Transport fakeTransport =
+        (method, url, headers, body) ->
+            new SimpleHttp.Response(200, "{ \"login\": \"octo\", \"name\": \"Octo Cat\" }");
 
-        GitHubClient client = new GitHubClient(fakeTransport, "T");
-        GitHubUser user = client.getUser("octo");
+    GitHubClient client = new GitHubClient(fakeTransport, "T");
+    GitHubUser user = client.getUser("octo");
 
-        assertEquals("octo", user.getLogin());
-        assertEquals("Octo Cat", user.getName());
-    }
+    assertEquals("octo", user.getLogin());
+    assertEquals("Octo Cat", user.getName());
+  }
 
-    @Test
-    void not_found_throws() {
-        SimpleHttp.Transport fakeTransport = (method, url, headers, body) ->
-                new SimpleHttp.Response(404, "{}");
+  @Test
+  void not_found_throws() {
+    SimpleHttp.Transport fakeTransport =
+        (method, url, headers, body) -> new SimpleHttp.Response(404, "{}");
 
-        GitHubClient client = new GitHubClient(fakeTransport, "T");
-        assertThrows(RuntimeException.class, () -> client.getUser("nope"));
-    }
+    GitHubClient client = new GitHubClient(fakeTransport, "T");
+    assertThrows(RuntimeException.class, () -> client.getUser("nope"));
+  }
 }
