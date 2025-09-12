@@ -1,4 +1,4 @@
-# Quickbase Craft Exercise – Java Solution
+
 
 This is a command-line program written in Java 17. It retrieves information about a GitHub user and creates or updates a Freshdesk contact using their APIs. The program requires Java 17+, Maven 3.9+, a GitHub Personal Access Token stored in the environment variable GITHUB_TOKEN, and a Freshdesk API key stored in the environment variable FRESHDESK_TOKEN. The Freshdesk subdomain must also be provided when running the program (for example, if your portal is https://mycompany.freshdesk.com, then the subdomain is "mycompany").
 
