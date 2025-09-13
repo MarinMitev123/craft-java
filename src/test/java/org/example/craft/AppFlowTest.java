@@ -9,8 +9,26 @@ import org.example.craft.github.GitHubClient;
 import org.example.craft.github.dto.GitHubUser;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Integration-style flow tests for {@link App#execute(String, GitHubClient, FreshdeskClient)}.
+ *
+ * <p>These tests validate the "decision logic" of the App:
+ * <ul>
+ *   <li>If a GitHub user has no corresponding Freshdesk contact → create one.</li>
+ *   <li>If a GitHub user already has a Freshdesk contact → update it.</li>
+ * </ul>
+ *
+ * <p>Real HTTP or database calls are replaced with Mockito mocks,
+ * so we only verify the control flow and mapping.</p>
+ */
 public class AppFlowTest {
 
+    /**
+     * Scenario: Freshdesk has no existing contact for this GitHub user.
+     * <p>
+     * Expected: {@link FreshdeskClient#create(FreshdeskContact)} is called,
+     * and {@link FreshdeskClient#update(String, FreshdeskContact)} is never called.
+     */
     @Test
     void creates_when_not_found() throws Exception {
         GitHubClient githubClient = mock(GitHubClient.class);
@@ -33,6 +51,12 @@ public class AppFlowTest {
         verify(freshdeskClient, never()).update(anyString(), any());
     }
 
+    /**
+     * Scenario: Freshdesk already contains a contact with the same GitHub external ID.
+     * <p>
+     * Expected: {@link FreshdeskClient#update(String, FreshdeskContact)} is called,
+     * and {@link FreshdeskClient#create(FreshdeskContact)} is never called.
+     */
     @Test
     void updates_when_found() throws Exception {
         GitHubClient githubClient = mock(GitHubClient.class);
